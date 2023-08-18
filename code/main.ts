@@ -45,8 +45,6 @@ function asteroidSpawnPoint() {
 const thrustAnimation = ['rocket1', 'rocket2', 'rocket3', 'rocket4'];
 
 scene('main', () => {
-  let score = 0;
-
   // creates the ui & background layers
   const bg = add([
     fixed(),
@@ -57,20 +55,18 @@ scene('main', () => {
   const ui = add([
     fixed(),
     z(100),
+    'ui'
   ]);
 
   const scoreLabel = ui.add([
-    text(`Score: ${score}`, {
-      size: 14,
-      pos: pos(8, 24)
-    })
+    text(`Score: 0`, { size: 14 }),
+    pos(8, 24),
+    { value: 0 }
   ]);
 
   ui.add([
-    text('Lives', {
-      size: 12,
-      pos: pos(8, 8)
-    })
+    text('Lives', { size: 12 }),
+    pos(8, 8)
   ]);
 
   onDraw('ui', () => {
@@ -206,6 +202,10 @@ scene('main', () => {
     if (player.animationFrame >= thrustAnimation.length) {
       player.animationFrame = 0;
     }
+
+    if (player.invulnerable) {
+      player.hidden = !player.hidden;
+    }
   });
 
   onUpdate('mobile', (e) => {
@@ -268,7 +268,8 @@ scene('main', () => {
     destroy(a);
 
     play('explosion');
-    score++;
+    scoreLabel.value = a.is("small") ? scoreLabel.value + 2 : scoreLabel.value++; // 2 points for small, 1 for big;
+    scoreLabel.text = `Score: ${scoreLabel.value}`;
   });
 
   onCollide('asteroid', 'asteroid', (a1, a2) => {
@@ -283,20 +284,64 @@ scene('main', () => {
     p.trigger('damage');
   });
 
+  // Asteroid destruction
+  on("destroy", "asteroid", (a) => {
+    if (!a.is("small")) {
+      // create four smaller asteroids at each corner of the large one
+      positions = [
+        a.pos.add(vec2(a.width / 4, -a.height / 4)),
+        a.pos.add(vec2(-a.width / 4, -a.height / 4)),
+        a.pos.add(vec2(-a.width / 4, a.height / 4)),
+        a.pos.add(vec2(a.width / 4, a.height / 4)),
+      ];
+  
+      // small asteroids move out from the center of the explosion
+      rotations = [16, 34, 65, 87];
+  
+      for (let i = 0; i < positions.length; i++) {
+        var s = add([
+          sprite(`asteroid_small${i + 1}`),
+          pos(positions[i]),
+          rotate(rotations[i]),
+          anchor("center"),
+          area(),
+          body(),
+          "asteroid",
+          "small",
+          "mobile",
+          "wraps",
+          {
+            speed: rand(15, 25),
+            initializing: false,
+          },
+        ]);
+      }
+    }
+  });
+  
   // Take damage
   player.on("damage", () => {
+    if (player.invulnerable) return;
+
     player.lives--;
   
     // destroy ship if lives finished
     if (player.lives <= 0) {
       destroy(player);
+      return;
     }
+
+    player.invulnerable = true;
+    wait(player.invulnerablityTime, () => {
+      player.invulnerable = false;
+      player.hidden = false;
+    });
   });
 
   // End game on player destruction
   player.on("destroy", () => {
     ui.add([
-      text(`GAME OVER\n\nScore: ${score}\n\n[R]estart?`, { size: 20 }),
+      text(`GAME OVER\n\nScore: ${scoreLabel.value}\n\n[R]estart?`, { size: 20 }),
       pos(center()),
     ]);
   });

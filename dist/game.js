@@ -1146,7 +1146,7 @@
         return t.events.on("keyPress", d);
       if (typeof d == "string" && typeof b == "function")
         return t.events.on("keyPress", (C) => C === d && b(d));
-    }, "onKeyPress"), on = o((d, b) => {
+    }, "onKeyPress"), on2 = o((d, b) => {
       if (typeof d == "function")
         return t.events.on("keyPressRepeat", d);
       if (typeof d == "string" && typeof b == "function")
@@ -1390,7 +1390,7 @@
           });
         }
     });
-    return Bt.observe(t.canvas), { dt: g, time: E, run: le, canvas: c, fps: M, numFrames: z2, quit: w, setFullscreen: pe, isFullscreen: Ge, setCursor: k, screenshot: I, getGamepads: Dt, getCursor: Z, setCursorLocked: ce, isCursorLocked: U, isTouchscreen: ge, mousePos: he, mouseDeltaPos: ie, isKeyDown: lt, isKeyPressed: Fe, isKeyPressedRepeat: en, isKeyReleased: We, isMouseDown: B, isMousePressed: xe, isMouseReleased: T, isMouseMoved: ct, isGamepadButtonPressed: tn, isGamepadButtonDown: nn, isGamepadButtonReleased: Je, getGamepadStick: ht, charInputted: mn, onResize: rn, onKeyDown: _e, onKeyPress: sn, onKeyPressRepeat: on, onKeyRelease: St, onMouseDown: Ct, onMousePress: Tt, onMouseRelease: He, onMouseMove: an, onCharInput: un, onTouchStart: cn, onTouchMove: ln, onTouchEnd: hn, onScroll: dn, onGamepadButtonDown: At, onGamepadButtonPress: Ot, onGamepadButtonRelease: Pt, onGamepadStick: Rt, onGamepadConnect: Mt, onGamepadDisconnect: fn, events: t.events, get paused() {
+    return Bt.observe(t.canvas), { dt: g, time: E, run: le, canvas: c, fps: M, numFrames: z2, quit: w, setFullscreen: pe, isFullscreen: Ge, setCursor: k, screenshot: I, getGamepads: Dt, getCursor: Z, setCursorLocked: ce, isCursorLocked: U, isTouchscreen: ge, mousePos: he, mouseDeltaPos: ie, isKeyDown: lt, isKeyPressed: Fe, isKeyPressedRepeat: en, isKeyReleased: We, isMouseDown: B, isMousePressed: xe, isMouseReleased: T, isMouseMoved: ct, isGamepadButtonPressed: tn, isGamepadButtonDown: nn, isGamepadButtonReleased: Je, getGamepadStick: ht, charInputted: mn, onResize: rn, onKeyDown: _e, onKeyPress: sn, onKeyPressRepeat: on2, onKeyRelease: St, onMouseDown: Ct, onMousePress: Tt, onMouseRelease: He, onMouseMove: an, onCharInput: un, onTouchStart: cn, onTouchMove: ln, onTouchEnd: hn, onScroll: dn, onGamepadButtonDown: At, onGamepadButtonPress: Ot, onGamepadButtonRelease: Pt, onGamepadStick: Rt, onGamepadConnect: Mt, onGamepadDisconnect: fn, events: t.events, get paused() {
       return t.paused;
     }, set paused(d) {
       t.paused = d;
@@ -1858,14 +1858,14 @@ vec4 frag(vec2 pos, vec2 uv, vec4 color, sampler2D tex) {
     }
     __name(sn, "sn");
     o(sn, "loadFont");
-    function on(e, n, r, i, u = {}) {
+    function on2(e, n, r, i, u = {}) {
       return B.bitmapFonts.add(e, Je(n).then((l) => {
         var _a2;
         return de(K.fromImage(l, u), r, i, (_a2 = u.chars) != null ? _a2 : Br);
       }));
     }
-    __name(on, "on");
-    o(on, "loadBitmapFont");
+    __name(on2, "on");
+    o(on2, "loadBitmapFont");
     function St(e = 1, n = 1, r = 0, i = 0, u = 1, l = 1) {
       let a = [], m = u / e, f = l / n;
       for (let p = 0; p < n; p++)
@@ -4147,7 +4147,7 @@ vec4 frag(vec2 pos, vec2 uv, vec4 color, sampler2D tex) {
       let e = s.width && s.height;
       e && !s.stretch && !s.letterbox || (c.width = c.offsetWidth * I, c.height = c.offsetHeight * I, hr(), e || (w.frameBuffer.free(), w.frameBuffer = new Ge(h.drawingBufferWidth, h.drawingBufferHeight), w.width = h.drawingBufferWidth / I, w.height = h.drawingBufferHeight / I));
     }), hr();
-    let tt = { VERSION: Ti, loadRoot: en, loadProgress: Fe, loadSprite: He, loadSpriteAtlas: Ct, loadSound: hn, loadBitmapFont: on, loadFont: sn, loadShader: cn, loadShaderURL: ln, loadAseprite: un, loadPedit: an, loadBean: dn, loadJSON: rn, load: ct, getSprite: At, getSound: Ot, getFont: Pt, getBitmapFont: Rt, getShader: Mt, getAsset: fn, Asset: ie, SpriteData: le, SoundData: ge, width: we, height: ye, center: _t, dt: Te, time: U.time, screenshot: U.screenshot, record: Xs, isFocused: Ws, setCursor: U.setCursor, getCursor: U.getCursor, setCursorLocked: U.setCursorLocked, isCursorLocked: U.isCursorLocked, setFullscreen: U.setFullscreen, isFullscreen: U.isFullscreen, isTouchscreen: U.isTouchscreen, onLoad: Sn, onLoading: ai, onResize: ui, onGamepadConnect: U.onGamepadConnect, onGamepadDisconnect: U.onGamepadDisconnect, onError: ci, onCleanup: li, camPos: ts, camScale: ns, camRot: rs, shake: ss, toScreen: bn, toWorld: Qn, setGravity: ms, getGravity: ps, setBackground: gs, getBackground: ws, getGamepads: U.getGamepads, add: vt, make: vn, destroy: Js, destroyAll: Zs, get: ar, readd: Qs, pos: Nt, scale: kt, rotate: bs, color: vs, opacity: ys, anchor: Un, area: Ts, sprite: En, text: As, rect: Os, circle: Rs, uvquad: Ps, outline: Ms, body: Fs, doubleJump: Bs, shader: Ls, timer: nr, fixed: Is, stay: rr, health: Vs, lifespan: js, z: xs, move: Es, offscreen: Cs, follow: Us, state: Ns, fadeIn: ks, tile: or, agent: Ys, on: je, onUpdate: yn, onDraw: is, onAdd: xn, onDestroy: Zn, onClick: cs, onCollide: os, onCollideUpdate: as, onCollideEnd: us, onHover: ls, onHoverUpdate: hs, onHoverEnd: ds, onKeyDown: U.onKeyDown, onKeyPress: U.onKeyPress, onKeyPressRepeat: U.onKeyPressRepeat, onKeyRelease: U.onKeyRelease, onMouseDown: U.onMouseDown, onMousePress: U.onMousePress, onMouseRelease: U.onMouseRelease, onMouseMove: U.onMouseMove, onCharInput: U.onCharInput, onTouchStart: U.onTouchStart, onTouchMove: U.onTouchMove, onTouchEnd: U.onTouchEnd, onScroll: U.onScroll, onGamepadButtonDown: U.onGamepadButtonDown, onGamepadButtonPress: U.onGamepadButtonPress, onGamepadButtonRelease: U.onGamepadButtonRelease, onGamepadStick: U.onGamepadStick, mousePos: Lt, mouseDeltaPos: U.mouseDeltaPos, isKeyDown: U.isKeyDown, isKeyPressed: U.isKeyPressed, isKeyPressedRepeat: U.isKeyPressedRepeat, isKeyReleased: U.isKeyReleased, isMouseDown: U.isMouseDown, isMousePressed: U.isMousePressed, isMouseReleased: U.isMouseReleased, isMouseMoved: U.isMouseMoved, isGamepadButtonPressed: U.isGamepadButtonPressed, isGamepadButtonDown: U.isGamepadButtonDown, isGamepadButtonReleased: U.isGamepadButtonReleased, charInputted: U.charInputted, loop: fs, wait: jt, play: dt2, volume: pn, burp: Ft, audioCtx: he.ctx, Timer: at, Line: Se, Rect: ne, Circle: ke, Polygon: Pe, Vec2: v, Color: L, Mat4: J, Quad: Q, RNG: rt, rand: Ut, randi: Gn, randSeed: pr, vec2: S, rgb: W, hsl2rgb: mr, quad: ue, choose: wr, chance: gr, lerp: Me, tween: Tn, easings: ot, map: $t, mapc: fr, wave: Dn, deg2rad: Re, rad2deg: st, testLineLine: nt, testRectRect: br, testRectLine: vr, testRectPoint: xt, testCirclePolygon: Ur, testLinePoint: yr, testLineCircle: Fn, drawSprite: Xr, drawText: Jn, formatText: $e, drawRect: Ce, drawLine: wt, drawLines: qn, drawTriangle: $n, drawCircle: Qe, drawEllipse: zn, drawUVQuad: Oe, drawPolygon: qe, drawFormattedText: ze, drawMasked: Wr, drawSubtracted: Jr, pushTransform: re, popTransform: V, pushTranslate: b, pushScale: C, pushRotate: ee, pushMatrix: d, usePostEffect: gn, debug: se, scene: _s, go: Hs, onSceneLeave: qs, addLevel: Ks, getData: $s, setData: sr, download: zt, downloadJSON: Cr, downloadText: In, downloadBlob: Vn, plug: ir, ASCII_CHARS: Br, canvas: U.canvas(), addKaboom: ni, LEFT: v.LEFT, RIGHT: v.RIGHT, UP: v.UP, DOWN: v.DOWN, RED: L.RED, GREEN: L.GREEN, BLUE: L.BLUE, YELLOW: L.YELLOW, MAGENTA: L.MAGENTA, CYAN: L.CYAN, WHITE: L.WHITE, BLACK: L.BLACK, quit: hi, Event: ve, EventHandler: De, EventController: Ae };
+    let tt = { VERSION: Ti, loadRoot: en, loadProgress: Fe, loadSprite: He, loadSpriteAtlas: Ct, loadSound: hn, loadBitmapFont: on2, loadFont: sn, loadShader: cn, loadShaderURL: ln, loadAseprite: un, loadPedit: an, loadBean: dn, loadJSON: rn, load: ct, getSprite: At, getSound: Ot, getFont: Pt, getBitmapFont: Rt, getShader: Mt, getAsset: fn, Asset: ie, SpriteData: le, SoundData: ge, width: we, height: ye, center: _t, dt: Te, time: U.time, screenshot: U.screenshot, record: Xs, isFocused: Ws, setCursor: U.setCursor, getCursor: U.getCursor, setCursorLocked: U.setCursorLocked, isCursorLocked: U.isCursorLocked, setFullscreen: U.setFullscreen, isFullscreen: U.isFullscreen, isTouchscreen: U.isTouchscreen, onLoad: Sn, onLoading: ai, onResize: ui, onGamepadConnect: U.onGamepadConnect, onGamepadDisconnect: U.onGamepadDisconnect, onError: ci, onCleanup: li, camPos: ts, camScale: ns, camRot: rs, shake: ss, toScreen: bn, toWorld: Qn, setGravity: ms, getGravity: ps, setBackground: gs, getBackground: ws, getGamepads: U.getGamepads, add: vt, make: vn, destroy: Js, destroyAll: Zs, get: ar, readd: Qs, pos: Nt, scale: kt, rotate: bs, color: vs, opacity: ys, anchor: Un, area: Ts, sprite: En, text: As, rect: Os, circle: Rs, uvquad: Ps, outline: Ms, body: Fs, doubleJump: Bs, shader: Ls, timer: nr, fixed: Is, stay: rr, health: Vs, lifespan: js, z: xs, move: Es, offscreen: Cs, follow: Us, state: Ns, fadeIn: ks, tile: or, agent: Ys, on: je, onUpdate: yn, onDraw: is, onAdd: xn, onDestroy: Zn, onClick: cs, onCollide: os, onCollideUpdate: as, onCollideEnd: us, onHover: ls, onHoverUpdate: hs, onHoverEnd: ds, onKeyDown: U.onKeyDown, onKeyPress: U.onKeyPress, onKeyPressRepeat: U.onKeyPressRepeat, onKeyRelease: U.onKeyRelease, onMouseDown: U.onMouseDown, onMousePress: U.onMousePress, onMouseRelease: U.onMouseRelease, onMouseMove: U.onMouseMove, onCharInput: U.onCharInput, onTouchStart: U.onTouchStart, onTouchMove: U.onTouchMove, onTouchEnd: U.onTouchEnd, onScroll: U.onScroll, onGamepadButtonDown: U.onGamepadButtonDown, onGamepadButtonPress: U.onGamepadButtonPress, onGamepadButtonRelease: U.onGamepadButtonRelease, onGamepadStick: U.onGamepadStick, mousePos: Lt, mouseDeltaPos: U.mouseDeltaPos, isKeyDown: U.isKeyDown, isKeyPressed: U.isKeyPressed, isKeyPressedRepeat: U.isKeyPressedRepeat, isKeyReleased: U.isKeyReleased, isMouseDown: U.isMouseDown, isMousePressed: U.isMousePressed, isMouseReleased: U.isMouseReleased, isMouseMoved: U.isMouseMoved, isGamepadButtonPressed: U.isGamepadButtonPressed, isGamepadButtonDown: U.isGamepadButtonDown, isGamepadButtonReleased: U.isGamepadButtonReleased, charInputted: U.charInputted, loop: fs, wait: jt, play: dt2, volume: pn, burp: Ft, audioCtx: he.ctx, Timer: at, Line: Se, Rect: ne, Circle: ke, Polygon: Pe, Vec2: v, Color: L, Mat4: J, Quad: Q, RNG: rt, rand: Ut, randi: Gn, randSeed: pr, vec2: S, rgb: W, hsl2rgb: mr, quad: ue, choose: wr, chance: gr, lerp: Me, tween: Tn, easings: ot, map: $t, mapc: fr, wave: Dn, deg2rad: Re, rad2deg: st, testLineLine: nt, testRectRect: br, testRectLine: vr, testRectPoint: xt, testCirclePolygon: Ur, testLinePoint: yr, testLineCircle: Fn, drawSprite: Xr, drawText: Jn, formatText: $e, drawRect: Ce, drawLine: wt, drawLines: qn, drawTriangle: $n, drawCircle: Qe, drawEllipse: zn, drawUVQuad: Oe, drawPolygon: qe, drawFormattedText: ze, drawMasked: Wr, drawSubtracted: Jr, pushTransform: re, popTransform: V, pushTranslate: b, pushScale: C, pushRotate: ee, pushMatrix: d, usePostEffect: gn, debug: se, scene: _s, go: Hs, onSceneLeave: qs, addLevel: Ks, getData: $s, setData: sr, download: zt, downloadJSON: Cr, downloadText: In, downloadBlob: Vn, plug: ir, ASCII_CHARS: Br, canvas: U.canvas(), addKaboom: ni, LEFT: v.LEFT, RIGHT: v.RIGHT, UP: v.UP, DOWN: v.DOWN, RED: L.RED, GREEN: L.GREEN, BLUE: L.BLUE, YELLOW: L.YELLOW, MAGENTA: L.MAGENTA, CYAN: L.CYAN, WHITE: L.WHITE, BLACK: L.BLACK, quit: hi, Event: ve, EventHandler: De, EventController: Ae };
     if (s.plugins && s.plugins.forEach(ir), s.global !== false)
       for (let e in tt)
         window[e] = tt[e];
@@ -4192,7 +4192,6 @@ vec4 frag(vec2 pos, vec2 uv, vec4 color, sampler2D tex) {
   __name(asteroidSpawnPoint, "asteroidSpawnPoint");
   var thrustAnimation = ["rocket1", "rocket2", "rocket3", "rocket4"];
   scene("main", () => {
-    let score = 0;
     const bg = add([
       fixed(),
       z(-100),
@@ -4200,19 +4199,17 @@ vec4 frag(vec2 pos, vec2 uv, vec4 color, sampler2D tex) {
     ]);
     const ui = add([
       fixed(),
-      z(100)
+      z(100),
+      "ui"
     ]);
     const scoreLabel = ui.add([
-      text(`Score: ${score}`, {
-        size: 14,
-        pos: pos(8, 24)
-      })
+      text(`Score: 0`, { size: 14 }),
+      pos(8, 24),
+      { value: 0 }
     ]);
     ui.add([
-      text("Lives", {
-        size: 12,
-        pos: pos(8, 8)
-      })
+      text("Lives", { size: 12 }),
+      pos(8, 8)
     ]);
     onDraw("ui", () => {
       for (let x = 64; x < 64 + 16 * player.lives; x += 16) {
@@ -4329,6 +4326,9 @@ vec4 frag(vec2 pos, vec2 uv, vec4 color, sampler2D tex) {
       if (player.animationFrame >= thrustAnimation.length) {
         player.animationFrame = 0;
       }
+      if (player.invulnerable) {
+        player.hidden = !player.hidden;
+      }
     });
     onUpdate("mobile", (e) => {
       e.move(pointAt(e.speed, e.angle));
@@ -4382,7 +4382,8 @@ vec4 frag(vec2 pos, vec2 uv, vec4 color, sampler2D tex) {
       destroy(b);
       destroy(a2);
       play("explosion");
-      score++;
+      scoreLabel.value = a2.is("small") ? scoreLabel.value + 2 : scoreLabel.value++;
+      scoreLabel.text = `Score: ${scoreLabel.value}`;
     });
     onCollide("asteroid", "asteroid", (a1, a2) => {
       if (a1.initializing || a2.initializing)
@@ -4395,17 +4396,54 @@ vec4 frag(vec2 pos, vec2 uv, vec4 color, sampler2D tex) {
         return;
       p.trigger("damage");
     });
+    on("destroy", "asteroid", (a2) => {
+      if (!a2.is("small")) {
+        positions = [
+          a2.pos.add(vec2(a2.width / 4, -a2.height / 4)),
+          a2.pos.add(vec2(-a2.width / 4, -a2.height / 4)),
+          a2.pos.add(vec2(-a2.width / 4, a2.height / 4)),
+          a2.pos.add(vec2(a2.width / 4, a2.height / 4))
+        ];
+        rotations = [16, 34, 65, 87];
+        for (let i = 0; i < positions.length; i++) {
+          var s = add([
+            sprite(`asteroid_small${i + 1}`),
+            pos(positions[i]),
+            rotate(rotations[i]),
+            anchor("center"),
+            area(),
+            body(),
+            "asteroid",
+            "small",
+            "mobile",
+            "wraps",
+            {
+              speed: rand(15, 25),
+              initializing: false
+            }
+          ]);
+        }
+      }
+    });
     player.on("damage", () => {
+      if (player.invulnerable)
+        return;
       player.lives--;
       if (player.lives <= 0) {
         destroy(player);
+        return;
       }
+      player.invulnerable = true;
+      wait(player.invulnerablityTime, () => {
+        player.invulnerable = false;
+        player.hidden = false;
+      });
     });
     player.on("destroy", () => {
       ui.add([
         text(`GAME OVER
 
-Score: ${score}
+Score: ${scoreLabel.value}
 
 [R]estart?`, { size: 20 }),
         pos(center())
